@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.RootController">
+   <children>
+      <MenuBar layoutY="8.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Datei">
+            <items>
+                  <MenuItem fx:id="mni_open" mnemonicParsing="false" onAction="#mni_open_OnAction" text="Öffnen..." />
+              <MenuItem fx:id="mnu_close" mnemonicParsing="false" onAction="#mnu_close_OnAction" text="Schließen" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane layoutY="33.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
+        <tabs>
+          <Tab text="3D Ansicht">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <Pane fx:id="Object3DPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label fx:id="lbl_explanation" layoutX="201.0" layoutY="80.0" text="Hinweis, dass Datei erst geladen werden muss" textFill="RED">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="StlCodeTab" disable="true" onSelectionChanged="#SltCodeTab_OnSelectionChanged" text="StlCode">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txa_StlCode" layoutY="8.0" prefHeight="706.0" prefWidth="595.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="429.0" AnchorPane.topAnchor="0.0" />
+                        <Pane layoutX="596.0" layoutY="4.0" prefHeight="700.0" prefWidth="426.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button fx:id="btn_back" layoutX="14.0" layoutY="258.0" mnemonicParsing="false" onAction="#btn_back_OnAction" prefHeight="25.0" prefWidth="52.0" text="zurück" />
+                              <Button fx:id="btn_further" layoutX="14.0" layoutY="307.0" mnemonicParsing="false" onAction="#btn_further_OnAction" prefHeight="25.0" prefWidth="52.0" text="weiter" />
+                              <Label layoutX="77.0" layoutY="62.0" text="Anzahl Faces pro Anzeige" />
+                              <Label layoutX="159.0" layoutY="99.0" text="Startindex" />
+                              <TextField fx:id="txt_numberOfFaces" layoutX="240.0" layoutY="58.0" prefHeight="25.0" prefWidth="49.0" text="25" />
+                              <TextField fx:id="txt_startIndex" layoutX="240.0" layoutY="95.0" prefHeight="25.0" prefWidth="49.0" text="0" />
+                              <Button fx:id="btn_set" layoutX="213.0" layoutY="197.0" mnemonicParsing="false" onAction="#btn_set_OnAction" text="übernehmen" />
+                              <CheckBox fx:id="cbx_facetNumbers" layoutX="138.0" layoutY="131.0" mnemonicParsing="false" selected="true" text="Facet Nummerierung an" />
+                              <CheckBox fx:id="cbx_facetsInLine" layoutX="138.0" layoutY="171.0" mnemonicParsing="false" selected="true" text="Zeilenweise Facets" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="tab_network" disable="true" text="Server">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btn_verbinden" layoutX="206.0" layoutY="87.0" mnemonicParsing="false" onAction="#btn_verbinden_OnAction" text="Starten" />
+                        <TextField fx:id="txt_port" layoutX="166.0" layoutY="43.0" text="3141" />
+                        <Label layoutX="111.0" layoutY="47.0" text="Port" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

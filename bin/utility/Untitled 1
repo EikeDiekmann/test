@@ -1,0 +1,84 @@
+                        /*
+            Matcher vertexMatcher = vertexPattern.matcher(matcher.group(1));
+            
+            
+            while(vertexMatcher.find())
+            {
+
+                System.out.println(vertexMatcher.group(0));
+            }
+            
+            Pattern vertexKoordPattern = Pattern.compile("\\d+\\.\\d+");
+            
+            */
+            /*
+            int i=0;
+            while (matcher.find()) 
+            {
+                System.out.println(i);
+                Matcher vertexMatcher = vertexPattern.matcher(matcher.group(1));
+                //vertexMatcher.find();
+                //System.out.println(vertexMatcher.group(0));
+                while(vertexMatcher.find())
+                {
+
+                    System.out.println(vertexMatcher.group(0));
+                }
+                i++;
+            }
+            */
+            /*
+            System.out.println("_______________________________________________");*/
+            
+            
+            
+            
+            
+            
+            
+            
+              Pattern LoopPattern = Pattern.compile(OUTER + " " + LOOP + "(.*?)" +ENDLOOP);
+            Matcher matcher = LoopPattern.matcher(stlFile);
+            
+            String vertex []=null;
+            Pattern vertexPattern = Pattern.compile("(\\d+(\\.|,)\\d+)"); // | (\\d+\\,\\d+)
+            
+            while (matcher.find())
+            {
+                System.out.println(matcher.end());
+                 vertex = matcher.group(1).split(VERTEX);
+                 
+                 int i = 0;
+                 while(i < vertex.length) 
+                 {
+                  //   System.out.println(vertex[i]);
+                     Matcher vertexMatcher = vertexPattern.matcher(vertex[i]);
+                     int j = 0;
+                     
+                     while(vertexMatcher.find())                  
+                     {
+                         
+                         if (j >= ANZAHL_VERTEX_KOORDS)
+                         {
+                             throw new IOException("Zu viele Koordinaten eines Vertex in datei enteckt");
+                         }
+                         System.out.print(j + " " + vertexMatcher.group(0).replace(",", ".")+ " ");
+                         
+                         j++;
+                         
+                     }  
+                     
+                     if (i > ANZAHL_VERTEX)
+                     {
+                         throw new IOException("Zu viele Vertexes eines Dreiecks in datei enteckt");
+                     }
+                     
+                     System.out.println();
+                     
+                     System.out.println(i);
+                     i++;
+                 }      
+                 if (i <= ANZAHL_VERTEX)
+                     throw new IOException(i + " Zu wenig Vertexes eines Dreiecks in datei enteckt");
+                 System.out.println("-----------------------------");
+            }
